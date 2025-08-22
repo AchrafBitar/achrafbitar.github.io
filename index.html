@@ -216,8 +216,8 @@
         .profile-img::before {
             content: '';
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 15px;
+            left: 15px;
             width: 100%;
             height: 100%;
             border: 3px solid #64ffda;
@@ -228,12 +228,8 @@
         .profile-img img {
             width: 100%;
             border-radius: 10px;
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
-        }
-
-        .profile-img:hover img {
             filter: grayscale(0%);
+            transition: filter 0.3s ease;
         }
 
         /* Skills Section */
@@ -626,6 +622,10 @@
                         <i class="fas fa-code"></i>
                         Voir mes Projets
                     </a>
+                    <a href="AchrafBitarCV.pdf" class="btn btn-secondary" download>
+                        <i class="fas fa-download"></i>
+                        Télécharger le CV
+                    </a>
                 </div>
             </div>
         </div>
@@ -642,15 +642,12 @@
                 
                 <p>Mon parcours académique en classes préparatoires (Mathématiques et Physique) puis en école d'ingénieurs m'a donné une solide base théorique, que j'ai enrichie par des expériences pratiques en entreprise.</p>
                 
-                <p>À travers mes stages chez Attijariwafa Bank et VINCI EXPROM FACILITIES, j'ai développé une expertise pratique en systèmes distribués, développement web full-stack, et architectures réactives. Je maîtrise particulièrement bien la stack MERN, Java/SpringBoot, et les technologies Microsoft Power Platform.</p>
+                <p>À travers mes stages, j'ai développé une expertise pratique en systèmes distribués, développement web full-stack, et architectures réactives. Je maîtrise particulièrement bien la stack MERN, Java/SpringBoot, et les technologies Microsoft Power Platform.</p>
                 
                 <p>Curieux et impliqué, je cherche toujours à apprendre de nouvelles technologies et à résoudre des problèmes complexes au sein d'équipes dynamiques et collaboratives.</p>
             </div>
             <div class="profile-img">
-                <img src="images/votre-photo.jpg" alt="Photo de profil de Achraf Bitar">
-                <div style="width: 300px; height: 300px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">
-                    <i class="fas fa-user"></i>
-                </div>
+                <img src="photo.png" alt="Photo de profil de Achraf Bitar">
             </div>
         </div>
     </section>
@@ -754,24 +751,26 @@
             <h2>Projets Académiques</h2>
         </div>
         <div class="projects-grid animate-on-scroll">
-            <div class="project-card">
-                <div class="project-card-header">
-                    <h3>Dashboard Financier Interactif</h3>
-                    <p>Application de visualisation financière avec prédictions intégrées</p>
-                </div>
-                <div class="project-card-body">
-                    <p>Développement d'une application full-stack de dashboard financier avec intégration de modèles de prédiction. Interface utilisateur moderne et réactive avec graphiques interactifs en temps réel.</p>
-                    <div class="project-tools">
-                        <span class="tool-tag">MongoDB</span>
-                        <span class="tool-tag">Express</span>
-                        <span class="tool-tag">React</span>
-                        <span class="tool-tag">Node.js</span>
-                        <span class="tool-tag">TypeScript</span>
-                        <span class="tool-tag">Vite</span>
-                        <span class="tool-tag">Recharts</span>
+            <a href="https://github.com/AchrafBitar/ProjetFederateurS5.git" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <h3>Dashboard Financier Interactif</h3>
+                        <p>Application de visualisation financière avec prédictions intégrées</p>
+                    </div>
+                    <div class="project-card-body">
+                        <p>Développement d'une application full-stack de dashboard financier avec intégration de modèles de prédiction. Interface utilisateur moderne et réactive avec graphiques interactifs en temps réel.</p>
+                        <div class="project-tools">
+                            <span class="tool-tag">MongoDB</span>
+                            <span class="tool-tag">Express</span>
+                            <span class="tool-tag">React</span>
+                            <span class="tool-tag">Node.js</span>
+                            <span class="tool-tag">TypeScript</span>
+                            <span class="tool-tag">Vite</span>
+                            <span class="tool-tag">Recharts</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             
             <div class="project-card">
                 <div class="project-card-header">
@@ -820,29 +819,41 @@
             <h2>Certifications</h2>
         </div>
         <div class="certifications-grid animate-on-scroll">
-            <div class="cert-card">
-                <i class="fab fa-python"></i>
-                <h3>IBM Python for Data Science</h3>
-                <p>Certification en analyse de données et programmation Python</p>
-            </div>
-            
-            <div class="cert-card">
-                <i class="fas fa-database"></i>
-                <h3>IBM Hadoop 101</h3>
-                <p>Fondamentaux des systèmes de données distribuées</p>
-            </div>
-            
-            <div class="cert-card">
-                <i class="fas fa-chart-line"></i>
-                <h3>IBM Data Analysis with Python</h3>
-                <p>Analyse avancée de données avec Python</p>
-            </div>
-            
-            <div class="cert-card">
-                <i class="fas fa-bug"></i>
-                <h3>Software Testing</h3>
-                <p>Méthodologies et bonnes pratiques de test logiciel</p>
-            </div>
+            <a href="https://www.credly.com/badges/59d0ac18-bece-4e8a-9b42-6ef9c7d754bc/linked_in_profile" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                <div class="cert-card">
+                    <i class="fab fa-python"></i>
+                    <h3>IBM Python for Data Science</h3>
+                    <p>Certification en analyse de données et programmation Python</p>
+                </div>
+            </a>
+            <a href="https://courses.cognitiveclass.ai/certificates/c2452c25525a4974b8b7cfa9ab3458be" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                <div class="cert-card">
+                    <i class="fas fa-database"></i>
+                    <h3>IBM Hadoop 101</h3>
+                    <p>Fondamentaux des systèmes de données distribuées</p>
+                </div>
+            </a>
+            <a href="https://courses.cognitiveclass.ai/certificates/b5014ea41c83467bb3e66bd0291d563a" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                <div class="cert-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>IBM Data Analysis with Python</h3>
+                    <p>Analyse avancée de données avec Python</p>
+                </div>
+            </a>
+            <a href="https://www.credly.com/badges/59d0ac18-bece-4e8a-9b42-6ef9c7d754bc/linked_in_profile" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                <div class="cert-card">
+                    <i class="fas fa-bug"></i>
+                    <h3>Software Testing</h3>
+                    <p>Méthodologies et bonnes pratiques de test logiciel</p>
+                </div>
+            </a>
+            <a href="https://www.credly.com/badges/59d0ac18-bece-4e8a-9b42-6ef9c7d754bc/linked_in_profile" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                <div class="cert-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Prompt Engineering</h3>
+                    <p>Direction créatif d'IA, CoT/ToT/Verbatim</p>
+                </div>
+            </a>
         </div>
     </section>
 
