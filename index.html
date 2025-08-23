@@ -4,904 +4,248 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achraf Bitar - Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Header & Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(13, 17, 33, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #64ffda;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-menu a:hover {
-            color: #64ffda;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: #64ffda;
-            transition: width 0.3s ease;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0d1121 0%, #1a2248 50%, #0d1121 100%);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.1" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            z-index: 2;
-            position: relative;
-        }
-
-        .hero-text h1 {
-            font-size: 4rem;
-            color: #fff;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-text h2 {
-            font-size: 2rem;
-            color: #64ffda;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            color: #8892b0;
-            max-width: 600px;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: #64ffda;
-            color: #0d1121;
-        }
-
-        .btn-primary:hover {
-            background: #52e6c6;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            border: 2px solid #64ffda;
-            color: #64ffda;
-            background: transparent;
-        }
-
-        .btn-secondary:hover {
-            background: #64ffda;
-            color: #0d1121;
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 100px 0;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: #0d1121;
-            margin-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background: #64ffda;
-            margin: 1rem auto;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-            color: #666;
-            font-size: 1.1rem;
-        }
-
-        .profile-img {
-            position: relative;
-        }
-
-        .profile-img::before {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 100%;
-            height: 100%;
-            border: 3px solid #64ffda;
-            z-index: -1;
-            border-radius: 10px;
-        }
-
-        .profile-img img {
-            width: 100%;
-            border-radius: 10px;
-            filter: grayscale(0%);
-            transition: filter 0.3s ease;
-        }
-
-        /* Skills Section */
-        .skills {
-            background: #f8f9fa;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 0 2rem;
-        }
-
-        .skill-category {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-category h3 {
-            color: #0d1121;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* Experience Section */
-        .experience-timeline {
-            position: relative;
-            padding: 0 2rem;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: #64ffda;
-            transform: translateX(-50%);
-        }
-
-        .experience-item {
-            position: relative;
-            margin: 2rem 0;
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            width: 45%;
-        }
-
-        .experience-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .experience-item:nth-child(even) {
-            left: 55%;
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #64ffda;
-            border-radius: 50%;
-            top: 2rem;
-        }
-
-        .experience-item:nth-child(odd)::before {
-            right: -60px;
-        }
-
-        .experience-item:nth-child(even)::before {
-            left: -60px;
-        }
-
-        .experience-item h3 {
-            color: #0d1121;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-item .company {
-            color: #64ffda;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-item .date {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Projects Section */
-        .projects {
-            background: #f8f9fa;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            padding: 0 2rem;
-        }
-
-        .project-card {
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .project-card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 2rem;
-            color: #fff;
-        }
-
-        .project-card h3 {
-            margin-bottom: 1rem;
-        }
-
-        .project-card-body {
-            padding: 2rem;
-        }
-
-        .project-tools {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tool-tag {
-            background: #e8f5e8;
-            color: #2e7d32;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        /* Education Section */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            padding: 0 2rem;
-        }
-
-        .education-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-left: 5px solid #64ffda;
-        }
-
-        .education-card h3 {
-            color: #0d1121;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-card .institution {
-            color: #64ffda;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Certifications Section */
-        .certifications {
-            background: #f8f9fa;
-        }
-
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            padding: 0 2rem;
-        }
-
-        .cert-card {
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .cert-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .cert-card i {
-            font-size: 3rem;
-            color: #64ffda;
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, #0d1121 0%, #1a2248 100%);
-            color: #fff;
-        }
-
-        .contact-content {
-            text-align: center;
-            padding: 0 2rem;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin: 2rem 0;
-        }
-
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contact-item i {
-            font-size: 2rem;
-            color: #64ffda;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(100, 255, 218, 0.1);
-            border: 2px solid #64ffda;
-            border-radius: 50%;
-            color: #64ffda;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: #64ffda;
-            color: #0d1121;
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        .footer {
-            background: #0d1121;
-            color: #8892b0;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-text h2 {
-                font-size: 1.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .experience-timeline::before {
-                left: 30px;
-            }
-
-            .experience-item {
-                width: calc(100% - 80px);
-                left: 60px !important;
-            }
-
-            .experience-item::before {
-                left: -60px !important;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-        }
-
-        /* Scroll animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .animate-on-scroll.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">AB</div>
-            <ul class="nav-menu">
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#about">À Propos</a></li>
-                <li><a href="#skills">Compétences</a></li>
-                <li><a href="#experience">Expérience</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#education">Formation</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Achraf Bitar</h1>
-                <h2>Ingénieur Junior en Informatique</h2>
-                <p>Passionné par le développement de systèmes distribués et les architectures réactives. Je conçois le code comme un langage d'idées et cherche constamment à résoudre des problèmes concrets à travers l'innovation technologique.</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-envelope"></i>
-                        Me Contacter
-                    </a>
-                    <a href="#projects" class="btn btn-secondary">
-                        <i class="fas fa-code"></i>
-                        Voir mes Projets
-                    </a>
-                    <a href="AchrafBitarCV.pdf" class="btn btn-secondary" download>
-                        <i class="fas fa-download"></i>
-                        Télécharger le CV
-                    </a>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#home" class="logo">AB</a>
+                <ul class="nav-menu">
+                    <li><a href="#about" class="nav-link">À Propos</a></li>
+                    <li><a href="#skills" class="nav-link">Compétences</a></li>
+                    <li><a href="#experience" class="nav-link">Expérience</a></li>
+                    <li><a href="#projects" class="nav-link">Projets</a></li>
+                    <li><a href="#education" class="nav-link">Formation</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
                 </div>
             </div>
-        </div>
-    </section>
+        </nav>
+    </header>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="section-title">
-            <h2>À Propos de Moi</h2>
-        </div>
-        <div class="about-content animate-on-scroll">
-            <div class="about-text">
-                <p>Ingénieur junior formé à l'ENSMR (École Nationale Supérieure des Mines de Rabat), je suis passionné par l'innovation technologique et le développement de solutions logicielles robustes.</p>
-                
-                <p>Mon parcours académique en classes préparatoires (Mathématiques et Physique) puis en école d'ingénieurs m'a donné une solide base théorique, que j'ai enrichie par des expériences pratiques en entreprise.</p>
-                
-                <p>À travers mes stages, j'ai développé une expertise pratique en systèmes distribués, développement web full-stack, et architectures réactives. Je maîtrise particulièrement bien la stack MERN, Java/SpringBoot, et les technologies Microsoft Power Platform.</p>
-                
-                <p>Curieux et impliqué, je cherche toujours à apprendre de nouvelles technologies et à résoudre des problèmes complexes au sein d'équipes dynamiques et collaboratives.</p>
-            </div>
-            <div class="profile-img">
-                <img src="photo.png" alt="Photo de profil de Achraf Bitar">
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section skills">
-        <div class="section-title">
-            <h2>Compétences Techniques</h2>
-        </div>
-        <div class="skills-grid animate-on-scroll">
-            <div class="skill-category">
-                <h3><i class="fas fa-code"></i> Langages de Programmation</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">C</span>
-                    <span class="skill-tag">C++</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">TypeScript</span>
-                    <span class="skill-tag">Python</span>
-                </div>
-            </div>
-            
-            <div class="skill-category">
-                <h3><i class="fas fa-globe"></i> Développement Web</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">React</span>
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">Express</span>
-                    <span class="skill-tag">HTML/CSS</span>
-                    <span class="skill-tag">SpringBoot</span>
-                    <span class="skill-tag">WebSockets</span>
-                    <span class="skill-tag">REST API</span>
-                </div>
-            </div>
-            
-            <div class="skill-category">
-                <h3><i class="fas fa-database"></i> Bases de Données & Réseaux</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">NoSQL</span>
-                    <span class="skill-tag">MongoDB</span>
-                    <span class="skill-tag">TCP/IP</span>
-                    <span class="skill-tag">OSI</span>
-                    <span class="skill-tag">Web Services</span>
-                </div>
-            </div>
-            
-            <div class="skill-category">
-                <h3><i class="fas fa-tools"></i> Outils & Frameworks</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">MERN Stack</span>
-                    <span class="skill-tag">Vite</span>
-                    <span class="skill-tag">PowerApps</span>
-                    <span class="skill-tag">SharePoint</span>
-                    <span class="skill-tag">Power BI</span>
-                    <span class="skill-tag">Power Automate</span>
-                    <span class="skill-tag">Recharts</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="section">
-        <div class="section-title">
-            <h2>Expérience Professionnelle</h2>
-        </div>
-        <div class="experience-timeline">
-            <div class="experience-item animate-on-scroll">
-                <h3>Stage d'été en Développement Web</h3>
-                <div class="company">Attijariwafa Bank</div>
-                <div class="date">Mars - Juillet 2025</div>
-                <p>Développement d'un système de cotation en temps réel utilisant les WebSockets pour les mises à jour instantanées. Création d'APIs robustes avec intégration de notifications push et communication inter-services.</p>
-                <div class="project-tools">
-                    <span class="tool-tag">Java</span>
-                    <span class="tool-tag">SpringBoot</span>
-                    <span class="tool-tag">React</span>
-                    <span class="tool-tag">TypeScript</span>
-                    <span class="tool-tag">WebSockets</span>
-                </div>
-            </div>
-            
-            <div class="experience-item animate-on-scroll">
-                <h3>Stage d'été en Solutions Digitales</h3>
-                <div class="company">VINCI EXPROM FACILITIES</div>
-                <div class="date">Juillet - Septembre 2024</div>
-                <p>Conception et développement d'une application complète de gestion des achats et des stocks. Utilisation de la suite Microsoft Power Platform pour créer une solution intégrée avec tableaux de bord analytiques.</p>
-                <div class="project-tools">
-                    <span class="tool-tag">PowerApps</span>
-                    <span class="tool-tag">SharePoint</span>
-                    <span class="tool-tag">Power Automate</span>
-                    <span class="tool-tag">Power BI</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section projects">
-        <div class="section-title">
-            <h2>Projets Académiques</h2>
-        </div>
-        <div class="projects-grid animate-on-scroll">
-            <a href="https://github.com/AchrafBitar/ProjetFederateurS5.git" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                <div class="project-card">
-                    <div class="project-card-header">
-                        <h3>Dashboard Financier Interactif</h3>
-                        <p>Application de visualisation financière avec prédictions intégrées</p>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Achraf Bitar</h1>
+                    <h2>Ingénieur Junior en Informatique</h2>
+                    <p>Passionné par les systèmes distribués et les architectures réactives. Je cherche à résoudre des problèmes concrets à travers l'innovation technologique.</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary"><i class="fas fa-envelope"></i> Me Contacter</a>
+                        <a href="AchrafBitarCV.pdf" class="btn btn-secondary" download><i class="fas fa-download"></i> Mon CV</a>
                     </div>
-                    <div class="project-card-body">
-                        <p>Développement d'une application full-stack de dashboard financier avec intégration de modèles de prédiction. Interface utilisateur moderne et réactive avec graphiques interactifs en temps réel.</p>
-                        <div class="project-tools">
-                            <span class="tool-tag">MongoDB</span>
-                            <span class="tool-tag">Express</span>
-                            <span class="tool-tag">React</span>
-                            <span class="tool-tag">Node.js</span>
-                            <span class="tool-tag">TypeScript</span>
-                            <span class="tool-tag">Vite</span>
-                            <span class="tool-tag">Recharts</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Wrapper -->
+        <div class="main-content-wrapper">
+
+            <!-- About Section -->
+            <section id="about" class="collapsible-section">
+                <h2 class="section-toggle">
+                    À Propos de Moi
+                    <i class="fas fa-chevron-down"></i>
+                </h2>
+                <div class="section-content">
+                    <div class="about-content animate-on-scroll">
+                        <div class="profile-img">
+                            <img src="photo.png" alt="Photo de profil de Achraf Bitar">
+                        </div>
+                        <div class="about-text">
+                            <p>Ingénieur junior de l'ENSMR, passionné par l'innovation et le développement de solutions logicielles robustes.</p>
+                            <p>Mon parcours m'a donné une solide base théorique, enrichie par des expériences pratiques en entreprise sur les systèmes distribués, le développement full-stack et les architectures réactives.</p>
+                            <p>Curieux et impliqué, je cherche toujours à apprendre et à résoudre des problèmes complexes au sein d'équipes dynamiques.</p>
                         </div>
                     </div>
                 </div>
-            </a>
-            
-            <div class="project-card">
-                <div class="project-card-header">
-                    <h3>Plateforme d'Apprentissage Universitaire</h3>
-                    <p>Application WEB complète pour la gestion de l'apprentissage</p>
-                </div>
-                <div class="project-card-body">
-                    <p>Conception (UML/SYSML) et réalisation d'une plateforme d'apprentissage complète pour les étudiants universitaires. Documentation technique exhaustive et architecture scalable.</p>
-                    <div class="project-tools">
-                        <span class="tool-tag">MERN Stack</span>
-                        <span class="tool-tag">UML</span>
-                        <span class="tool-tag">SYSML</span>
-                        <span class="tool-tag">Documentation</span>
-                        <span class="tool-tag">Architecture</span>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="collapsible-section">
+                <h2 class="section-toggle">
+                    Compétences Techniques
+                    <i class="fas fa-chevron-down"></i>
+                </h2>
+                <div class="section-content">
+                    <div class="skills-grid animate-on-scroll">
+                        <!-- Skill Categories Here -->
+                        <div class="skill-category">
+                            <h3><i class="fas fa-code"></i> Langages</h3>
+                            <div class="skill-list">
+                                <span class="skill-tag">Java</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">C/C++</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3><i class="fas fa-globe"></i> Web</h3>
+                            <div class="skill-list">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">SpringBoot</span>
+                                <span class="skill-tag">WebSockets</span>
+                                <span class="skill-tag">REST API</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3><i class="fas fa-database"></i> Données & Réseaux</h3>
+                            <div class="skill-list">
+                                <span class="skill-tag">SQL</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">TCP/IP</span>
+                                <span class="skill-tag">Web Services</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3><i class="fas fa-tools"></i> Outils</h3>
+                            <div class="skill-list">
+                                <span class="skill-tag">MERN Stack</span>
+                                <span class="skill-tag">Power Platform</span>
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">Docker</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Education Section -->
-    <section id="education" class="section">
-        <div class="section-title">
-            <h2>Formation Académique</h2>
-        </div>
-        <div class="education-grid animate-on-scroll">
-            <div class="education-card">
-                <h3>Diplôme d'Ingénieur Junior</h3>
-                <div class="institution">ENSMR - École Nationale Supérieure des Mines de Rabat</div>
-                <div class="date">Septembre 2022 - En cours</div>
-                <p>Formation d'excellence en ingénierie informatique avec spécialisation en systèmes distribués et développement logiciel. Cursus renforcé en mathématiques appliquées et sciences de l'ingénieur.</p>
-            </div>
-            
-            <div class="education-card">
-                <h3>Classes Préparatoires aux Grandes Écoles</h3>
-                <div class="institution">First Prepa - CPGE</div>
-                <div class="date">Septembre 2020 - 2022</div>
-                <p>Formation intensive en Mathématiques et Physique, préparation aux concours des grandes écoles d'ingénieurs. Développement de solides bases scientifiques et méthodologiques.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="section certifications">
-        <div class="section-title">
-            <h2>Certifications</h2>
-        </div>
-        <div class="certifications-grid animate-on-scroll">
-            <a href="https://www.credly.com/badges/59d0ac18-bece-4e8a-9b42-6ef9c7d754bc/linked_in_profile" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                <div class="cert-card">
-                    <i class="fab fa-python"></i>
-                    <h3>IBM Python for Data Science</h3>
-                    <p>Certification en analyse de données et programmation Python</p>
-                </div>
-            </a>
-            <a href="https://courses.cognitiveclass.ai/certificates/c2452c25525a4974b8b7cfa9ab3458be" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                <div class="cert-card">
-                    <i class="fas fa-database"></i>
-                    <h3>IBM Hadoop 101</h3>
-                    <p>Fondamentaux des systèmes de données distribuées</p>
-                </div>
-            </a>
-            <a href="https://courses.cognitiveclass.ai/certificates/b5014ea41c83467bb3e66bd0291d563a" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                <div class="cert-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>IBM Data Analysis with Python</h3>
-                    <p>Analyse avancée de données avec Python</p>
-                </div>
-            </a>
-            <a href="https://www.credly.com/badges/59d0ac18-bece-4e8a-9b42-6ef9c7d754bc/linked_in_profile" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                <div class="cert-card">
-                    <i class="fas fa-bug"></i>
-                    <h3>Software Testing</h3>
-                    <p>Méthodologies et bonnes pratiques de test logiciel</p>
-                </div>
-            </a>
-            <a href="https://courses.cognitiveclass.ai/certificates/0f0f4c1a965a461795f4bc7ed992040b" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                <div class="cert-card">
-                    <i class="fas fa-microchip"></i>
-                    <h3>Prompt Engineering</h3>
-                    <p>Direction créatif d'IA, CoT/ToT/Verbatim</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="section-title">
-            <h2 style="color: #fff;">Contact</h2>
-        </div>
-        <div class="contact-content animate-on-scroll">
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Prêt à collaborer sur des projets innovants ? Contactez-moi !</p>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h4>Email</h4>
-                        <p>achraf.bitar@enim.ac.ma</p>
+            <!-- Experience Section -->
+            <section id="experience" class="collapsible-section">
+                 <h2 class="section-toggle">
+                    Expérience Professionnelle
+                    <i class="fas fa-chevron-down"></i>
+                </h2>
+                <div class="section-content">
+                    <div class="experience-timeline animate-on-scroll">
+                         <div class="experience-item">
+                            <h3>Développement Web</h3>
+                            <div class="company">Attijariwafa Bank</div>
+                            <div class="date">Mars - Juillet 2025</div>
+                            <p>Développement d'un système de cotation en temps réel (WebSockets) et création d'APIs robustes.</p>
+                        </div>
+                        <div class="experience-item">
+                            <h3>Solutions Digitales</h3>
+                            <div class="company">VINCI EXPROM FACILITIES</div>
+                            <div class="date">Juillet - Septembre 2024</div>
+                            <p>Conception d'une application de gestion des achats (Microsoft Power Platform) avec tableaux de bord analytiques.</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <h4>Téléphone</h4>
-                        <p>+212 690 743 114</p>
+            </section>
+            
+            <!-- Projects Section -->
+            <section id="projects" class="collapsible-section">
+                <h2 class="section-toggle">
+                    Projets
+                    <i class="fas fa-chevron-down"></i>
+                </h2>
+                <div class="section-content">
+                    <div class="projects-grid animate-on-scroll">
+                        <a href="https://github.com/AchrafBitar/ProjetFederateurS5.git" target="_blank" class="project-card">
+                            <h3>Dashboard Financier Interactif</h3>
+                            <p>Application full-stack de visualisation financière avec modèles de prédiction et graphiques en temps réel.</p>
+                            <div class="project-tools">
+                                <span class="tool-tag">MERN</span>
+                                <span class="tool-tag">TypeScript</span>
+                                <span class="tool-tag">Recharts</span>
+                            </div>
+                        </a>
+                         <div class="project-card">
+                            <h3>Plateforme d'Apprentissage</h3>
+                            <p>Conception (UML/SYSML) et réalisation d'une plateforme d'apprentissage pour les étudiants universitaires.</p>
+                            <div class="project-tools">
+                                <span class="tool-tag">MERN</span>
+                                <span class="tool-tag">UML</span>
+                                <span class="tool-tag">Architecture</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            </section>
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
+            <!-- Education & Certifications Section -->
+            <section id="education" class="collapsible-section">
+                <h2 class="section-toggle">
+                    Formation & Certifications
+                    <i class="fas fa-chevron-down"></i>
+                </h2>
+                <div class="section-content">
+                    <div class="education-grid animate-on-scroll">
+                         <div class="education-card">
+                            <h3>Diplôme d'Ingénieur Junior</h3>
+                            <div class="institution">ENSMR - Mines de Rabat</div>
+                            <div class="date">2022 - Présent</div>
+                        </div>
+                        <div class="education-card">
+                            <h3>Classes Préparatoires (MP)</h3>
+                            <div class="institution">First Prepa - CPGE</div>
+                            <div class="date">2020 - 2022</div>
+                        </div>
+                    </div>
+                    <div class="certifications-grid animate-on-scroll">
+                        <a href="https://www.credly.com/badges/59d0ac18-bece-4e8a-9b42-6ef9c7d754bc/linked_in_profile" target="_blank" class="cert-card">
+                           <i class="fab fa-python"></i> IBM Python for Data Science
+                        </a>
+                        <a href="https://courses.cognitiveclass.ai/certificates/c2452c25525a4974b8b7cfa9ab3458be" target="_blank" class="cert-card">
+                           <i class="fas fa-database"></i> IBM Hadoop 101
+                        </a>
+                        <a href="https://courses.cognitiveclass.ai/certificates/b5014ea41c83467bb3e66bd0291d563a" target="_blank" class ="cert-card">
+                            <i class="fas fa-chart-line"></i> IBM Data Analysis with Python
+                        </a>
+                        <a href="https://www.credly.com/badges/59d0ac18-bece-4e8a-9b42-6ef9c7d754bc/linked_in_profile" target="_blank" class ="cert-card">
+                            <i class="fas fa-microchip"></i> Prompt Engineering
+                        </a>
+                    </div>
+                </div>
+            </section>
 
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-        });
-    </script>
+            <!-- Contact Section -->
+            <section id="contact" class="collapsible-section">
+                <h2 class="section-toggle">
+                    Contact
+                    <i class="fas fa-chevron-down"></i>
+                </h2>
+                <div class="section-content">
+                    <div class="contact-content animate-on-scroll">
+                        <p class="contact-intro">Prêt à collaborer ? Contactez-moi !</p>
+                        <div class="contact-info">
+                            <p><i class="fas fa-envelope"></i> achraf.bitar@enim.ac.ma</p>
+                            <p><i class="fas fa-phone"></i> +212 690 743 114</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/achraf-bitar-a4a972256" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/AchrafBitar" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
     
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Achraf Bitar. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
