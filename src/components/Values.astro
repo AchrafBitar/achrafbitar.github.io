@@ -1,0 +1,14 @@
+---
+import { values } from '../data/content';
+---
+
+<div class="grid gap-8 md:grid-cols-3">
+  {
+    values.map((v) => (
+      <div>
+        <h3 class="text-base font-semibold text-slate-900 dark:text-white">{v.title}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{v.body}</p>
+      </div>
+    ))
+  }
+</div>

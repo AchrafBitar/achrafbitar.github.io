@@ -1,0 +1,60 @@
+---
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/playfair-display/700.css';
+import '../styles/global.css';
+import { profile } from '../data/content';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${profile.name} — ${profile.role}`,
+  description = `${profile.name}, ${profile.role} based in ${profile.location}. ${profile.availability}.`,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://achrafbitar.github.io/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://achrafbitar.github.io/" />
+    <meta property="og:image" content="https://achrafbitar.github.io/photo.png" />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Set the theme before first paint so there is no flash of the wrong one. -->
+    <script is:inline>
+      (() => {
+        try {
+          const saved = localStorage.getItem('theme');
+          const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+          const useLight = saved ? saved === 'light' : prefersLight;
+          document.documentElement.classList.toggle('dark', !useLight);
+        } catch {
+          /* private mode or blocked storage: keep the default dark theme */
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-300">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-emerald-500 focus:px-4 focus:py-2 focus:font-medium focus:text-slate-900"
+    >
+      Skip to content
+    </a>
+    <slot />
+  </body>
+</html>

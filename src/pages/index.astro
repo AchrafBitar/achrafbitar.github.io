@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.tsx';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Expertise from '../components/Expertise.astro';
+import Experience from '../components/Experience.astro';
+import Education from '../components/Education.astro';
+import Projects from '../components/Projects.astro';
+import Values from '../components/Values.astro';
+import Contact from '../components/Contact.astro';
+import { profile } from '../data/content';
+
+const year = new Date().getFullYear();
+---
+
+<Layout>
+  <Header client:load initials={profile.initials} />
+
+  <main id="main">
+    <Hero />
+
+    <Section id="about" eyebrow="About" title="Background">
+      <p class="max-w-3xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+        {profile.intro}
+      </p>
+      <div class="mt-10">
+        <Values />
+      </div>
+    </Section>
+
+    <Section
+      id="expertise"
+      eyebrow="Expertise"
+      title="Technical skills"
+      lead="What I reach for day to day, grouped the same way as on my CV."
+    >
+      <Expertise />
+    </Section>
+
+    <Section id="experience" eyebrow="Experience" title="Professional journey">
+      <Experience />
+      <h3 class="mt-16 font-serif text-2xl font-bold text-slate-900 dark:text-white">Education</h3>
+      <div class="mt-6">
+        <Education />
+      </div>
+    </Section>
+
+    <Section
+      id="projects"
+      eyebrow="Projects"
+      title="Things I have built"
+      lead="Personal work, described as it actually is rather than as it would sound best."
+    >
+      <Projects />
+      <a
+        href={profile.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-block text-sm font-medium text-emerald-700 hover:underline dark:text-emerald-400"
+      >
+        More on GitHub &rarr;
+      </a>
+    </Section>
+
+    <Section
+      id="contact"
+      eyebrow="Contact"
+      title="Get in touch"
+      lead={`I am looking for a 6-month end-of-studies internship, March to September 2027, based in or around ${profile.location}.`}
+    >
+      <Contact />
+    </Section>
+  </main>
+
+  <footer class="border-t border-slate-200 py-8 dark:border-slate-800">
+    <div class="mx-auto max-w-5xl px-6 text-sm text-slate-500 dark:text-slate-400">
+      &copy; {year} {profile.name}. Built with Astro, React and Tailwind CSS.
+    </div>
+  </footer>
+</Layout>
