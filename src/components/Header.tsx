@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react';
-import { Menu, Moon, Sun, X } from 'lucide-react';
 
 const links = [
-  { href: '#about', label: 'About' },
-  { href: '#expertise', label: 'Expertise' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#profile', n: '01', label: 'Profile' },
+  { href: '#work', n: '02', label: 'Work' },
+  { href: '#projects', n: '03', label: 'Projects' },
+  { href: '#stack', n: '04', label: 'Stack' },
+  { href: '#education', n: '05', label: 'Education' },
+  { href: '#contact', n: '06', label: 'Contact' },
 ];
 
 export default function Header({ initials }: { initials: string }) {
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(true);
 
-  // The inline script in Layout.astro already set the class; read it back so
-  // the icon matches what is actually on screen.
+  // Layout.astro already applied the class before paint; read it back so the
+  // label matches what is actually on screen.
   useEffect(() => {
     setDark(document.documentElement.classList.contains('dark'));
   }, []);
@@ -31,58 +31,54 @@ export default function Header({ initials }: { initials: string }) {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-slate-200/70 bg-slate-50/85 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/85">
-      <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-        <a
-          href="#top"
-          className="font-serif text-xl font-bold tracking-tight text-slate-900 dark:text-white"
-        >
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-rule bg-paper/90 backdrop-blur-sm dark:border-rule-dark dark:bg-night/90">
+      <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6 sm:px-10">
+        <a href="#top" className="display text-lg font-medium tracking-tight">
           {initials}
+          <span className="text-accent dark:text-accent-dark">.</span>
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-slate-600 transition-colors hover:text-emerald-700 dark:text-slate-400 dark:hover:text-emerald-400"
-            >
-              {l.label}
+            <a key={l.href} href={l.href} className="meta group text-ink-2 dark:text-bone-2">
+              <span className="text-accent dark:text-accent-dark">{l.n}</span>{' '}
+              <span className="group-hover:text-ink dark:group-hover:text-bone">{l.label}</span>
             </a>
           ))}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <button
             type="button"
             onClick={toggleTheme}
             aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
-            className="rounded-md p-2 text-slate-600 transition-colors hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-800"
+            className="meta text-ink-2 hover:text-ink dark:text-bone-2 dark:hover:text-bone"
           >
-            {dark ? <Sun size={18} /> : <Moon size={18} />}
+            {dark ? 'Light' : 'Dark'}
           </button>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
-            className="rounded-md p-2 text-slate-600 transition-colors hover:bg-slate-200 md:hidden dark:text-slate-400 dark:hover:bg-slate-800"
+            className="meta text-ink-2 hover:text-ink md:hidden dark:text-bone-2 dark:hover:text-bone"
           >
-            {open ? <X size={18} /> : <Menu size={18} />}
+            {open ? 'Close' : 'Index'}
           </button>
         </div>
       </nav>
 
       {open && (
-        <div className="border-t border-slate-200 bg-slate-50 px-6 py-3 md:hidden dark:border-slate-800 dark:bg-slate-900">
+        <div className="border-t border-rule bg-paper px-6 py-2 md:hidden dark:border-rule-dark dark:bg-night">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block py-2 text-sm text-slate-600 dark:text-slate-400"
+              className="meta flex gap-3 border-b border-rule/60 py-3 last:border-0 dark:border-rule-dark/60"
             >
-              {l.label}
+              <span className="text-accent dark:text-accent-dark">{l.n}</span>
+              <span>{l.label}</span>
             </a>
           ))}
         </div>

@@ -1,8 +1,7 @@
 ---
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/playfair-display/700.css';
+import '@fontsource-variable/newsreader';
+import '@fontsource-variable/geist';
+import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
 import { profile } from '../data/content';
 
@@ -26,6 +25,8 @@ const {
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href="https://achrafbitar.github.io/" />
+    <meta name="theme-color" content="#100e0c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fbf9f5" media="(prefers-color-scheme: light)" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -48,10 +49,10 @@ const {
       })();
     </script>
   </head>
-  <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-300">
+  <body class="bg-paper text-ink dark:bg-night dark:text-bone">
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-emerald-500 focus:px-4 focus:py-2 focus:font-medium focus:text-slate-900"
+      class="meta sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-70 focus:bg-accent focus:px-4 focus:py-2 focus:text-paper dark:focus:bg-accent-dark dark:focus:text-night"
     >
       Skip to content
     </a>

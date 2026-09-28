@@ -1,0 +1,38 @@
+---
+// Renders a brand glyph from the CC0 `simple-icons` set. Falls back to a
+// typographic mark for brands the set does not carry (AWS, OpenAI, Oracle).
+import * as icons from 'simple-icons';
+
+interface Props {
+  slug?: string;
+  label: string;
+  size?: number;
+}
+const { slug, label, size = 22 } = Astro.props;
+
+const key = slug ? `si${slug.charAt(0).toUpperCase()}${slug.slice(1)}` : '';
+const icon = (icons as Record<string, { path: string; title: string } | undefined>)[key];
+---
+
+{
+  icon ? (
+    <svg
+      role="img"
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      class="brand-mark"
+      aria-label={label}
+    >
+      <title>{label}</title>
+      <path d={icon.path} />
+    </svg>
+  ) : (
+    <span
+      class="brand-mark font-mono text-[0.7rem] font-semibold tracking-wider"
+      aria-label={label}
+    >
+      {label}
+    </span>
+  )
+}

@@ -1,26 +1,34 @@
 ---
-import { Mail, Linkedin, Github } from 'lucide-react';
 import { profile } from '../data/content';
 
 const items = [
-  { icon: Mail, label: profile.email, href: `mailto:${profile.email}` },
-  { icon: Linkedin, label: 'linkedin.com/in/achrafbitar', href: profile.linkedin },
-  { icon: Github, label: 'github.com/AchrafBitar', href: profile.github },
+  { k: 'Email', v: profile.email, href: `mailto:${profile.email}` },
+  { k: 'LinkedIn', v: 'in/achrafbitar', href: profile.linkedin },
+  { k: 'GitHub', v: 'AchrafBitar', href: profile.github },
 ];
 ---
 
-<div class="flex flex-col gap-3">
+<dl>
   {
-    items.map(({ icon: Icon, label, href }) => (
-      <a
-        href={href}
-        rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-        target={href.startsWith('mailto:') ? undefined : '_blank'}
-        class="inline-flex w-fit items-center gap-3 text-slate-600 transition-colors hover:text-emerald-700 dark:text-slate-400 dark:hover:text-emerald-400"
+    items.map((it, i) => (
+      <div
+        class:list={[
+          'grid gap-x-8 gap-y-1 py-5 sm:grid-cols-[11rem_1fr]',
+          i > 0 && 'border-t border-rule/70 dark:border-rule-dark/70',
+        ]}
       >
-        <Icon size={18} aria-hidden="true" />
-        <span class="text-sm">{label}</span>
-      </a>
+        <dt class="meta pt-1.5 text-accent dark:text-accent-dark">{it.k}</dt>
+        <dd>
+          <a
+            href={it.href}
+            target={it.href.startsWith('mailto:') ? undefined : '_blank'}
+            rel={it.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+            class="display link-underline text-xl sm:text-2xl"
+          >
+            {it.v}
+          </a>
+        </dd>
+      </div>
     ))
   }
-</div>
+</dl>

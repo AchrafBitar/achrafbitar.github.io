@@ -1,15 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.tsx';
-import Hero from '../components/Hero.astro';
+import Masthead from '../components/Masthead.astro';
 import Section from '../components/Section.astro';
-import Expertise from '../components/Expertise.astro';
 import Experience from '../components/Experience.astro';
-import Education from '../components/Education.astro';
 import Projects from '../components/Projects.astro';
-import Values from '../components/Values.astro';
+import Stack from '../components/Stack.astro';
+import Education from '../components/Education.astro';
 import Contact from '../components/Contact.astro';
-import { profile } from '../data/content';
+import { profile, values } from '../data/content';
 
 const year = new Date().getFullYear();
 ---
@@ -18,38 +17,32 @@ const year = new Date().getFullYear();
   <Header client:load initials={profile.initials} />
 
   <main id="main">
-    <Hero />
+    <Masthead />
 
-    <Section id="about" eyebrow="About" title="Background">
-      <p class="max-w-3xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">
-        {profile.intro}
-      </p>
-      <div class="mt-10">
-        <Values />
+    <Section id="profile" n="01" title="Profile" lead={profile.intro}>
+      <div class="grid gap-x-10 gap-y-9 sm:grid-cols-3">
+        {
+          values.map((v, i) => (
+            <div>
+              <p class="meta text-accent dark:text-accent-dark">
+                {String(i + 1).padStart(2, '0')}
+              </p>
+              <h3 class="mt-2 text-[0.95rem] font-medium">{v.title}</h3>
+              <p class="mt-2 text-[0.9rem] leading-relaxed text-ink-2 dark:text-bone-2">{v.body}</p>
+            </div>
+          ))
+        }
       </div>
     </Section>
 
-    <Section
-      id="expertise"
-      eyebrow="Expertise"
-      title="Technical skills"
-      lead="What I reach for day to day, grouped the same way as on my CV."
-    >
-      <Expertise />
-    </Section>
-
-    <Section id="experience" eyebrow="Experience" title="Professional journey">
+    <Section id="work" n="02" title="Work">
       <Experience />
-      <h3 class="mt-16 font-serif text-2xl font-bold text-slate-900 dark:text-white">Education</h3>
-      <div class="mt-6">
-        <Education />
-      </div>
     </Section>
 
     <Section
       id="projects"
-      eyebrow="Projects"
-      title="Things I have built"
+      n="03"
+      title="Projects"
       lead="Personal work, described as it actually is rather than as it would sound best."
     >
       <Projects />
@@ -57,25 +50,36 @@ const year = new Date().getFullYear();
         href={profile.github}
         target="_blank"
         rel="noopener noreferrer"
-        class="mt-8 inline-block text-sm font-medium text-emerald-700 hover:underline dark:text-emerald-400"
+        class="meta link-underline mt-8 inline-block text-accent dark:text-accent-dark"
       >
         More on GitHub &rarr;
       </a>
     </Section>
 
+    <Section id="stack" n="04" title="Stack">
+      <Stack />
+    </Section>
+
+    <Section id="education" n="05" title="Education">
+      <Education />
+    </Section>
+
     <Section
       id="contact"
-      eyebrow="Contact"
-      title="Get in touch"
-      lead={`I am looking for a 6-month end-of-studies internship, March to September 2027, based in or around ${profile.location}.`}
+      n="06"
+      title="Contact"
+      lead={`Looking for a 6-month end-of-studies internship, March to September 2027, in or around ${profile.location}.`}
     >
       <Contact />
     </Section>
   </main>
 
-  <footer class="border-t border-slate-200 py-8 dark:border-slate-800">
-    <div class="mx-auto max-w-5xl px-6 text-sm text-slate-500 dark:text-slate-400">
-      &copy; {year} {profile.name}. Built with Astro, React and Tailwind CSS.
+  <footer class="border-t border-rule dark:border-rule-dark">
+    <div
+      class="meta mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-6 py-8 text-ink-2 sm:px-10 dark:text-bone-2"
+    >
+      <span>&copy; {year} {profile.name}</span>
+      <span>Astro &middot; React &middot; Tailwind &middot; set in Newsreader &amp; Geist</span>
     </div>
   </footer>
 </Layout>

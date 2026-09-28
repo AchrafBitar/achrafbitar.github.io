@@ -1,0 +1,28 @@
+---
+import { expertise, stackStrip } from '../data/content';
+import BrandIcon from './BrandIcon.astro';
+---
+
+<div
+  class="flex flex-wrap items-center gap-x-7 gap-y-5 border-y border-rule py-7 text-ink dark:border-rule-dark dark:text-bone"
+>
+  {stackStrip.map((b) => <BrandIcon slug={b.slug} label={b.label} />)}
+</div>
+
+<dl class="mt-12">
+  {
+    expertise.map((group, i) => (
+      <div
+        class:list={[
+          'grid gap-x-8 gap-y-2 py-5 sm:grid-cols-[11rem_1fr]',
+          i > 0 && 'border-t border-rule/70 dark:border-rule-dark/70',
+        ]}
+      >
+        <dt class="meta pt-1 text-accent dark:text-accent-dark">{group.title}</dt>
+        <dd class="text-[0.95rem] leading-relaxed text-ink-2 dark:text-bone-2">
+          {group.skills.join('  ·  ')}
+        </dd>
+      </div>
+    ))
+  }
+</dl>

@@ -1,0 +1,59 @@
+---
+import { profile, cvs } from '../data/content';
+---
+
+<section id="top" class="mx-auto max-w-6xl px-6 pt-28 pb-16 sm:px-10 sm:pt-36">
+  <p class="meta text-accent dark:text-accent-dark">{profile.role}</p>
+
+  <div class="mt-5 flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between">
+    <h1 class="display text-[clamp(3.2rem,11vw,7.5rem)] leading-[0.86] font-medium">
+      Achraf<br />Bitar<span class="text-accent dark:text-accent-dark">.</span>
+    </h1>
+    <img
+      src="/photo.png"
+      alt=""
+      width="160"
+      height="160"
+      class="h-28 w-28 shrink-0 rounded-full object-cover grayscale sm:mb-2 sm:h-36 sm:w-36"
+    />
+  </div>
+
+  <hr class="mt-10 border-0 border-t border-rule dark:border-rule-dark" />
+
+  <dl class="meta mt-4 flex flex-wrap gap-x-10 gap-y-3 text-ink-2 dark:text-bone-2">
+    <div>
+      <dt class="text-accent dark:text-accent-dark">Based</dt>
+      <dd class="mt-1">{profile.location}</dd>
+    </div>
+    <div>
+      <dt class="text-accent dark:text-accent-dark">Available</dt>
+      <dd class="mt-1">Mar &ndash; Sep 2027 &middot; 6 months</dd>
+    </div>
+    <div>
+      <dt class="text-accent dark:text-accent-dark">Right to work</dt>
+      <dd class="mt-1">Student visa granted</dd>
+    </div>
+  </dl>
+
+  <p
+    class="display mt-12 max-w-2xl text-[clamp(1.35rem,2.8vw,1.9rem)] leading-[1.35] text-balance"
+  >
+    {profile.tagline}
+  </p>
+
+  <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3">
+    <a
+      href={`mailto:${profile.email}`}
+      class="meta link-underline text-accent dark:text-accent-dark"
+    >
+      Get in touch &rarr;
+    </a>
+    {
+      cvs.map((cv) => (
+        <a href={cv.href} download class="meta link-underline text-ink-2 dark:text-bone-2">
+          &darr; {cv.label}
+        </a>
+      ))
+    }
+  </div>
+</section>

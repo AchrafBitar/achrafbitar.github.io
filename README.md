@@ -43,6 +43,28 @@ files don't accumulate on every deploy.
     public/                  photo, favicons, CV PDFs, .nojekyll
     scripts/deploy.mjs       dist -> root copy
 
+## Design
+
+Warm paper/ink palette with a single rust accent, set in Newsreader (display),
+Geist (text) and JetBrains Mono (metadata). Sections are numbered and laid out on
+a two-column editorial grid — a sticky label rail on the left, content on the
+right — rather than as a stack of uniform cards. A faint SVG grain sits over the
+page via `body::after`.
+
+Tokens live in the `@theme` block of `src/styles/global.css`; change them there
+and both themes follow.
+
+### Logos
+
+Brand marks come from [`simple-icons`](https://github.com/simple-icons/simple-icons),
+which is CC0. AWS, OpenAI, Oracle and the Java wordmark are **not** in that set —
+they were withdrawn at the trademark holders' request — so they render as
+typographic marks instead. Don't replace them with logos pulled off the web:
+that set was curated for redistribution and ad-hoc copies are not.
+
+Employers are shown as two-letter monograms (`employerMarks` in
+`src/data/content.ts`) for the same reason.
+
 ## CV files
 
 `public/CV_Achraf_Bitar_EN.pdf` and `public/CV_Achraf_Bitar_FR.pdf` are the current CVs.

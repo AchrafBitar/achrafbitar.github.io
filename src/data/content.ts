@@ -210,3 +210,38 @@ export const values = [
       'architect around from the start, not a checklist you satisfy at the end.',
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Presentation metadata. Brand marks come from `simple-icons` (CC0). AWS,
+// OpenAI, Oracle and the Java wordmark are not in that set — they were
+// withdrawn over trademark — so they appear as typographic marks instead.
+// ---------------------------------------------------------------------------
+
+export const stackStrip: { slug?: string; label: string }[] = [
+  { slug: 'python', label: 'Python' },
+  { slug: 'openjdk', label: 'Java' },
+  { slug: 'springboot', label: 'Spring Boot' },
+  { slug: 'fastapi', label: 'FastAPI' },
+  { slug: 'postgresql', label: 'PostgreSQL' },
+  { slug: 'redis', label: 'Redis' },
+  { slug: 'docker', label: 'Docker' },
+  { slug: 'linux', label: 'Linux' },
+  { slug: 'anthropic', label: 'Claude API' },
+  { slug: 'react', label: 'React' },
+  { slug: 'angular', label: 'Angular' },
+  { slug: 'typescript', label: 'TypeScript' },
+  { slug: 'git', label: 'Git' },
+  { label: 'AWS' },
+  { label: 'OpenAI' },
+  { label: 'Oracle' },
+];
+
+// Two-letter monograms stand in for employer logos. Those marks are not freely
+// licensed for redistribution, and a consistent set of monograms reads as a
+// deliberate choice where a mix of scraped logos would not.
+export const employerMarks: Record<string, string> = {
+  'ATOZ Services': 'AZ',
+  'Attijariwafa Bank': 'AW',
+  'Vinci Energies (Exprom)': 'VE',
+  OQTech: 'OQ',
+};
